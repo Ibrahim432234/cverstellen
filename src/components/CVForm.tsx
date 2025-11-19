@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CVData, WorkExperience, Education, Skill, Language, Certification } from '../types/cv';
+import { CVData, WorkExperience, Education, Skill, Language, Certification, Project } from '../types/cv';
 
 interface Props {
   data: CVData;
@@ -166,6 +166,44 @@ export const CVForm: React.FC<Props> = ({ data, onChange, onPhotoUpload }) => {
     });
   };
 
+  const addProject = () => {
+    const newProject: Project = {
+      id: Date.now().toString(),
+      name: '',
+      description: '',
+      technologies: [],
+      role: '',
+      startDate: '',
+      endDate: '',
+      current: false,
+      githubUrl: '',
+      liveUrl: '',
+      highlights: ''
+    };
+    onChange({ ...data, projects: [...data.projects, newProject] });
+  };
+
+  const updateProject = (id: string, field: string, value: string | boolean | string[]) => {
+    onChange({
+      ...data,
+      projects: data.projects.map(project =>
+        project.id === id ? { ...project, [field]: value } : project
+      )
+    });
+  };
+
+  const removeProject = (id: string) => {
+    onChange({
+      ...data,
+      projects: data.projects.filter(project => project.id !== id)
+    });
+  };
+
+  const updateProjectTechnologies = (id: string, techString: string) => {
+    const technologies = techString.split(',').map(t => t.trim()).filter(t => t.length > 0);
+    updateProject(id, 'technologies', technologies);
+  };
+
   const inputStyle: React.CSSProperties = {
     width: '100%',
     padding: '0.5rem',
@@ -196,6 +234,7 @@ export const CVForm: React.FC<Props> = ({ data, onChange, onPhotoUpload }) => {
   const sections = [
     { id: 'personal', label: 'Persönliche Daten' },
     { id: 'summary', label: 'Profil' },
+    { id: 'projects', label: 'Projekte' },
     { id: 'experience', label: 'Berufserfahrung' },
     { id: 'education', label: 'Ausbildung' },
     { id: 'skills', label: 'Fähigkeiten' },
@@ -345,6 +384,56 @@ export const CVForm: React.FC<Props> = ({ data, onChange, onPhotoUpload }) => {
               />
             </div>
           </div>
+
+          <h4 style={{ marginTop: '1.5rem', marginBottom: '0.75rem', color: '#475569' }}>
+            Online-Profile (optional)
+          </h4>
+
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+            <div>
+              <label style={labelStyle}>GitHub</label>
+              <input
+                type="url"
+                value={data.personalInfo.github || ''}
+                onChange={(e) => updatePersonalInfo('github', e.target.value)}
+                style={inputStyle}
+                placeholder="https://github.com/username"
+              />
+            </div>
+            <div>
+              <label style={labelStyle}>LinkedIn</label>
+              <input
+                type="url"
+                value={data.personalInfo.linkedin || ''}
+                onChange={(e) => updatePersonalInfo('linkedin', e.target.value)}
+                style={inputStyle}
+                placeholder="https://linkedin.com/in/username"
+              />
+            </div>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+            <div>
+              <label style={labelStyle}>Portfolio</label>
+              <input
+                type="url"
+                value={data.personalInfo.portfolio || ''}
+                onChange={(e) => updatePersonalInfo('portfolio', e.target.value)}
+                style={inputStyle}
+                placeholder="https://portfolio.com"
+              />
+            </div>
+            <div>
+              <label style={labelStyle}>Website</label>
+              <input
+                type="url"
+                value={data.personalInfo.website || ''}
+                onChange={(e) => updatePersonalInfo('website', e.target.value)}
+                style={inputStyle}
+                placeholder="https://website.com"
+              />
+            </div>
+          </div>
         </div>
       )}
 
@@ -359,6 +448,153 @@ export const CVForm: React.FC<Props> = ({ data, onChange, onPhotoUpload }) => {
             style={{ ...inputStyle, minHeight: '150px', resize: 'vertical' }}
             placeholder="Beschreiben Sie kurz Ihre berufliche Erfahrung, Fähigkeiten und Karriereziele..."
           />
+        </div>
+      )}
+
+      {/* Projects */}
+      {activeSection === 'projects' && (
+        <div>
+          <h3 style={{ marginTop: 0, color: '#1e293b' }}>Projekte</h3>
+          {data.projects.map((project) => (
+            <div key={project.id} style={{
+              border: '1px solid #e2e8f0',
+              borderRadius: '4px',
+              padding: '1rem',
+              marginBottom: '1rem'
+            }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
+                <h4 style={{ margin: 0, color: '#475569' }}>Projekt</h4>
+                <button
+                  onClick={() => removeProject(project.id)}
+                  style={{
+                    ...buttonStyle,
+                    backgroundColor: '#ef4444',
+                    padding: '0.25rem 0.75rem'
+                  }}
+                >
+                  Entfernen
+                </button>
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '1rem' }}>
+                <div>
+                  <label style={labelStyle}>Projektname</label>
+                  <input
+                    type="text"
+                    value={project.name}
+                    onChange={(e) => updateProject(project.id, 'name', e.target.value)}
+                    style={inputStyle}
+                    placeholder="z.B. E-Commerce Plattform"
+                  />
+                </div>
+                <div>
+                  <label style={labelStyle}>Rolle (optional)</label>
+                  <input
+                    type="text"
+                    value={project.role || ''}
+                    onChange={(e) => updateProject(project.id, 'role', e.target.value)}
+                    style={inputStyle}
+                    placeholder="z.B. Lead Developer"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label style={labelStyle}>Technologien (kommagetrennt)</label>
+                <input
+                  type="text"
+                  value={project.technologies.join(', ')}
+                  onChange={(e) => updateProjectTechnologies(project.id, e.target.value)}
+                  style={inputStyle}
+                  placeholder="z.B. React, TypeScript, Node.js, MongoDB"
+                />
+                <small style={{ color: '#64748b', fontSize: '0.85rem' }}>
+                  Tipp: Mehrere Technologien mit Komma trennen
+                </small>
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1rem', marginTop: '0.5rem' }}>
+                <div>
+                  <label style={labelStyle}>Von</label>
+                  <input
+                    type="text"
+                    value={project.startDate}
+                    onChange={(e) => updateProject(project.id, 'startDate', e.target.value)}
+                    style={inputStyle}
+                    placeholder="01/2023"
+                  />
+                </div>
+                <div>
+                  <label style={labelStyle}>Bis</label>
+                  <input
+                    type="text"
+                    value={project.endDate}
+                    onChange={(e) => updateProject(project.id, 'endDate', e.target.value)}
+                    style={inputStyle}
+                    placeholder="06/2023"
+                    disabled={project.current}
+                  />
+                </div>
+                <div style={{ display: 'flex', alignItems: 'flex-end' }}>
+                  <label style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', marginBottom: '0.5rem' }}>
+                    <input
+                      type="checkbox"
+                      checked={project.current}
+                      onChange={(e) => updateProject(project.id, 'current', e.target.checked)}
+                      style={{ marginRight: '0.5rem' }}
+                    />
+                    Aktuell
+                  </label>
+                </div>
+              </div>
+
+              <div>
+                <label style={labelStyle}>Beschreibung</label>
+                <textarea
+                  value={project.description}
+                  onChange={(e) => updateProject(project.id, 'description', e.target.value)}
+                  style={{ ...inputStyle, minHeight: '80px', resize: 'vertical' }}
+                  placeholder="Beschreiben Sie das Projekt und Ihre Verantwortlichkeiten..."
+                />
+              </div>
+
+              <div>
+                <label style={labelStyle}>Highlights / Erfolge</label>
+                <textarea
+                  value={project.highlights}
+                  onChange={(e) => updateProject(project.id, 'highlights', e.target.value)}
+                  style={{ ...inputStyle, minHeight: '60px', resize: 'vertical' }}
+                  placeholder="z.B. 50% Performance-Verbesserung, 10.000+ Nutzer, Award gewonnen..."
+                />
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                <div>
+                  <label style={labelStyle}>GitHub URL (optional)</label>
+                  <input
+                    type="url"
+                    value={project.githubUrl || ''}
+                    onChange={(e) => updateProject(project.id, 'githubUrl', e.target.value)}
+                    style={inputStyle}
+                    placeholder="https://github.com/username/project"
+                  />
+                </div>
+                <div>
+                  <label style={labelStyle}>Live Demo URL (optional)</label>
+                  <input
+                    type="url"
+                    value={project.liveUrl || ''}
+                    onChange={(e) => updateProject(project.id, 'liveUrl', e.target.value)}
+                    style={inputStyle}
+                    placeholder="https://project-demo.com"
+                  />
+                </div>
+              </div>
+            </div>
+          ))}
+          <button onClick={addProject} style={buttonStyle}>
+            + Projekt hinzufügen
+          </button>
         </div>
       )}
 

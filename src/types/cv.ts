@@ -10,6 +10,11 @@ export interface PersonalInfo {
   dateOfBirth?: string;
   nationality?: string;
   profilePhoto?: string;
+  // IT-specific fields
+  github?: string;
+  linkedin?: string;
+  portfolio?: string;
+  website?: string;
 }
 
 export interface WorkExperience {
@@ -54,18 +59,33 @@ export interface Certification {
   expiryDate?: string;
 }
 
+export interface Project {
+  id: string;
+  name: string;
+  description: string;
+  technologies: string[]; // e.g., ['React', 'TypeScript', 'Node.js']
+  role?: string; // e.g., 'Lead Developer', 'Solo Project'
+  startDate: string;
+  endDate: string;
+  current: boolean;
+  githubUrl?: string;
+  liveUrl?: string;
+  highlights: string; // Key achievements or features
+}
+
 export interface CVData {
   personalInfo: PersonalInfo;
   professionalSummary: string;
   workExperience: WorkExperience[];
   education: Education[];
+  projects: Project[];
   skills: Skill[];
   languages: Language[];
   certifications: Certification[];
   hobbies?: string;
 }
 
-export type TemplateType = 'modern' | 'classic' | 'creative' | 'minimal' | 'professional';
+export type TemplateType = 'modern' | 'classic' | 'creative' | 'minimal' | 'professional' | 'developer' | 'compact';
 
 export interface TemplateConfig {
   type: TemplateType;

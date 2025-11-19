@@ -40,6 +40,22 @@ export const templateConfigs: Record<string, TemplateConfig> = {
     primaryColor: '#059669',
     accentColor: '#10b981',
     fontFamily: "'Arial', sans-serif"
+  },
+  developer: {
+    type: 'developer',
+    name: 'Developer',
+    description: 'Optimiert für IT & Software-Entwickler mit Projekt-Fokus',
+    primaryColor: '#0891b2',
+    accentColor: '#06b6d4',
+    fontFamily: "'Roboto Mono', monospace"
+  },
+  compact: {
+    type: 'compact',
+    name: 'Kompakt',
+    description: 'Ultra-kompakt: Alles auf 2 Seiten - ideal für viele Infos',
+    primaryColor: '#4f46e5',
+    accentColor: '#6366f1',
+    fontFamily: "'Arial', sans-serif"
   }
 };
 
@@ -65,13 +81,25 @@ export const suggestTemplate = (profession: string): TemplateConfig => {
     return templateConfigs.classic;
   }
 
-  // Tech professions
+  // Tech professions - Developer template
   if (professionLower.includes('entwickler') ||
       professionLower.includes('programmierer') ||
-      professionLower.includes('it') ||
       professionLower.includes('software') ||
+      professionLower.includes('developer') ||
+      professionLower.includes('engineer') ||
+      professionLower.includes('backend') ||
+      professionLower.includes('frontend') ||
+      professionLower.includes('fullstack') ||
+      professionLower.includes('devops') ||
+      professionLower.includes('data scientist') ||
+      professionLower.includes('informatik')) {
+    return templateConfigs.developer;
+  }
+
+  // General IT/Tech professions
+  if (professionLower.includes('it') ||
       professionLower.includes('tech')) {
-    return templateConfigs.modern;
+    return templateConfigs.compact;
   }
 
   // Minimalist preference

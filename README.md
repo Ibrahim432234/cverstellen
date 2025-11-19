@@ -1,24 +1,57 @@
-# CV Erstellen - Professional CV Generator
+# CV Erstellen - Professional CV Generator für Informatiker
 
-Ein moderner, KI-gestützter Lebenslauf-Generator mit professionellen Vorlagen. Erstellen Sie beeindruckende CVs in wenigen Minuten!
+Ein moderner, KI-gestützter Lebenslauf-Generator speziell optimiert für IT-Profis und Software-Entwickler. Erstellen Sie beeindruckende CVs mit Projekt-Portfolios in wenigen Minuten!
+
+## ✨ Highlights
+
+- 🎯 **Speziell für Informatiker**: Optimierte Templates für IT-Berufe
+- 📦 **Projekt-Portfolio**: Zeigen Sie Ihre Hobby- und professionellen Projekte
+- 🔗 **Social Links**: GitHub, LinkedIn, Portfolio-Website Integration
+- 📄 **Kompakt auf 2 Seiten**: Intelligentes Layout passt alles auf maximal 2 Seiten
+- 🎨 **7 Professionelle Vorlagen**: Developer, Kompakt, Modern, Klassisch, Kreativ, Minimal, Professionell
+- 🤖 **KI-Template-Empfehlung**: Automatische Vorschlagung basierend auf Ihrem Beruf
 
 ## Features
 
-- **5 Professionelle Vorlagen**: Modern, Klassisch, Kreativ, Minimal und Professionell
-- **KI-gestützte Template-Vorschläge**: Automatische Vorlageempfehlung basierend auf Ihrem Beruf
-- **Profilfoto-Upload**: Laden Sie Ihr Foto direkt hoch
-- **Umfassende Datenerfassung**:
-  - Persönliche Informationen
-  - Professionelles Profil
-  - Berufserfahrung
-  - Ausbildung
-  - Fähigkeiten mit Levelanzeige
-  - Sprachen (nach CEFR-Standard)
-  - Zertifikate
+### IT-spezifische Features
+- **Projekte-Sektion**:
+  - Projektname, Rolle und Zeitraum
+  - Technologie-Tags (React, TypeScript, Node.js, etc.)
+  - GitHub und Live-Demo Links
+  - Projekt-Highlights und Erfolge
+  - Detaillierte Beschreibungen
+
+- **Online-Profile**:
+  - GitHub Integration
+  - LinkedIn Profil
+  - Portfolio-Website
+  - Persönliche Website
+
+### Template-Varianten
+- **Developer**: Monospace-Font, kompakt, projekt-fokussiert (Standard für IT)
+- **Kompakt**: Ultra-kompakt, 2-Spalten-Layout, ideal für viele Informationen
+- **Modern**: Farbenfrohes Design mit klaren Linien
+- **Klassisch**: Traditionelles, zeitloses Design
+- **Kreativ**: Auffälliges Design für kreative Berufe
+- **Minimal**: Schlichtes, minimalistisches Design
+- **Professionell**: Ausgewogenes Design für alle Branchen
+
+### Umfassende Datenerfassung
+- ✅ Persönliche Informationen mit Profilfoto
+- ✅ Professionelles Profil / Zusammenfassung
+- ✅ **Projekte** (NEU!) mit Technologie-Tags
+- ✅ Berufserfahrung
+- ✅ Ausbildung
+- ✅ Fähigkeiten mit Levelanzeige (Beginner → Expert)
+- ✅ Sprachen (A1-C2 + Muttersprache)
+- ✅ Zertifikate
+
+### Weitere Features
 - **Live-Vorschau**: Sehen Sie Änderungen in Echtzeit
-- **PDF-Export**: Exportieren Sie Ihren CV als PDF-Datei
+- **PDF-Export**: Exportieren Sie Ihren CV als professionelles PDF
 - **Responsive Design**: Funktioniert auf Desktop, Tablet und Mobilgeräten
 - **TypeScript**: Vollständig typsicher entwickelt
+- **Technologie-Tags**: Visuelle Darstellung Ihres Tech-Stacks
 
 ## Technologie-Stack
 
@@ -58,7 +91,9 @@ npm run dev
 ## Verwendung
 
 ### 1. Vorlage auswählen
-Wählen Sie eine der 5 professionellen Vorlagen aus:
+Wählen Sie eine der 7 professionellen Vorlagen aus:
+- **Developer** (Standard): Optimiert für IT/Software-Entwickler mit Projekt-Fokus
+- **Kompakt**: Ultra-kompakt, alles auf 2 Seiten, 2-Spalten-Layout
 - **Modern**: Farbenfrohes Design mit klaren Linien
 - **Klassisch**: Zeitloses Design für konservative Branchen
 - **Kreativ**: Auffälliges Design für kreative Berufe
@@ -67,23 +102,32 @@ Wählen Sie eine der 5 professionellen Vorlagen aus:
 
 ### 2. Daten eingeben
 Füllen Sie die Formulare in den verschiedenen Bereichen aus:
-- **Persönliche Daten**: Name, Kontaktinformationen, Adresse
-- **Profilfoto**: Laden Sie Ihr Foto hoch (optional)
-- **Profil**: Kurze Zusammenfassung Ihrer beruflichen Erfahrung
+- **Persönliche Daten**:
+  - Name, E-Mail, Telefon, Adresse
+  - GitHub, LinkedIn, Portfolio, Website (optional)
+  - Profilfoto hochladen (optional)
+- **Profil**: Kurze Zusammenfassung Ihrer beruflichen Erfahrung und Ziele
+- **Projekte** (NEU!):
+  - Projektname, Rolle, Zeitraum
+  - Technologien (kommagetrennt: React, TypeScript, Node.js...)
+  - Beschreibung und Highlights
+  - GitHub & Live-Demo Links
 - **Berufserfahrung**: Fügen Sie Ihre Arbeitsstellen hinzu
 - **Ausbildung**: Fügen Sie Ihre Ausbildungen hinzu
-- **Fähigkeiten**: Listen Sie Ihre Fähigkeiten mit Level auf
-- **Sprachen**: Geben Sie Ihre Sprachkenntnisse an
+- **Fähigkeiten**: Listen Sie Ihre Tech-Stack mit Level auf (Beginner → Expert)
+- **Sprachen**: Geben Sie Ihre Sprachkenntnisse an (A1-C2, Muttersprache)
 - **Zertifikate**: Fügen Sie relevante Zertifikate hinzu
 
+💡 **Tipp für Informatiker**: Fokussieren Sie sich auf die Projekte-Sektion! Zeigen Sie Ihre besten Hobby- und professionellen Projekte mit konkreten Technologien und Links.
+
 ### 3. KI-Vorschlag nutzen (optional)
-Klicken Sie auf "🤖 KI-Vorlage vorschlagen", um eine passende Vorlage basierend auf Ihrer ersten Berufsposition zu erhalten.
+Klicken Sie auf "🤖 KI-Vorlage vorschlagen", um eine passende Vorlage basierend auf Ihrer Berufsposition zu erhalten. Die KI erkennt IT-Berufe automatisch und schlägt das Developer-Template vor.
 
 ### 4. Live-Vorschau
-Die Vorschau wird automatisch aktualisiert, während Sie Ihre Daten eingeben.
+Die Vorschau wird automatisch aktualisiert, während Sie Ihre Daten eingeben. Auf mobilen Geräten nutzen Sie den "👁️ Vorschau anzeigen" Button.
 
 ### 5. PDF exportieren
-Klicken Sie auf "📄 Als PDF exportieren", um Ihren fertigen CV herunterzuladen.
+Klicken Sie auf "📄 Als PDF exportieren", um Ihren fertigen CV herunterzuladen. Das PDF behält das gewählte Design bei und ist druckfertig.
 
 ## Projektstruktur
 

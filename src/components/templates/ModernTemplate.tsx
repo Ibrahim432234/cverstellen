@@ -7,7 +7,7 @@ interface Props {
 }
 
 export const ModernTemplate: React.FC<Props> = ({ data, config }) => {
-  const { personalInfo, professionalSummary, workExperience, education, skills, languages, certifications } = data;
+  const { personalInfo, professionalSummary, workExperience, education, projects, skills, languages, certifications } = data;
 
   return (
     <div style={{

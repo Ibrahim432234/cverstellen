@@ -20,6 +20,7 @@ const initialData: CVData = {
   professionalSummary: '',
   workExperience: [],
   education: [],
+  projects: [],
   skills: [],
   languages: [],
   certifications: []
@@ -27,7 +28,7 @@ const initialData: CVData = {
 
 function App() {
   const [cvData, setCvData] = useState<CVData>(initialData);
-  const [selectedTemplate, setSelectedTemplate] = useState<TemplateConfig>(templateConfigs.modern);
+  const [selectedTemplate, setSelectedTemplate] = useState<TemplateConfig>(templateConfigs.developer);
   const [showPreview, setShowPreview] = useState(false);
   const [isExporting, setIsExporting] = useState(false);
 
